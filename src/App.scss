@@ -1,0 +1,18 @@
+@use './base';
+
+
+.content {
+    margin-top: 22px;
+
+    .addBookBtn {
+        background-color: base.$primaryColor;
+        width: 400px;
+        height: 60px;
+        border-radius: 20px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+}

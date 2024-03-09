@@ -1,0 +1,71 @@
+@use '../../base';
+
+.navbar {
+    width: 100vw;
+    background-color: base.$primaryColor;
+    position: sticky;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: 60px;
+    align-items: center;
+    justify-items: center;
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        width: 100%;
+        max-width: 430px;
+        justify-self: end;
+
+        animation: displayMenu 0.2s;
+        
+        li {
+            width: 42px;
+            height: 42px;
+        }
+    }
+
+    svg {
+        width: 42px !important;
+        height: 42px !important;
+        fill: base.$secondaryColor;
+    }
+
+    .menuButton {
+        height: 42px;
+        width: 42px;
+
+        &:active {
+            transform: scale(1.1);
+            transition: transform 0.2s;
+        }
+    }
+
+    .title {
+        justify-self: start;
+        padding-left: 12px;
+        font-size: 24px;
+
+        animation: displayTitle 0.2s;
+    }
+}
+
+@keyframes displayMenu {
+    from {
+        transform: translateX(400px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes displayTitle {
+    from {
+        transform: translateX(-50px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
