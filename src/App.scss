@@ -4,7 +4,7 @@
 .content {
     margin-top: 22px;
 
-    .addBookBtn {
+    .addBookBtn, .cancelBtn {
         background-color: base.$primaryColor;
         width: 400px;
         height: 60px;
@@ -14,5 +14,10 @@
         justify-content: center;
         align-items: center;
         font-size: 24px;
+    }
+
+    .cancelBtn {
+        background-color: base.$secondaryColor;
+        color: white;
     }
 }
