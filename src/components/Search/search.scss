@@ -1,0 +1,47 @@
+@use '../../base';
+
+.search-form {
+    position: relative;
+    width: 400px;
+    height: 60px;
+    margin: auto;
+    margin-top: 22px;
+    
+    input[type="text"] {
+        border: 2px solid base.$gray;
+        border-radius: 20px;
+        height: 60px;
+        width: 400px;
+        font-size: 24px;
+        padding-left: 22px;
+    }
+
+    button {
+        width: 36px;
+        height: 36px;
+        border: none;
+        background-color: #bbb;
+        border-radius: 5px;
+
+        position: relative;
+        top: -48px;
+        left: 350px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            height: 24px;
+            width: 24px; 
+            
+        }
+    }
+}
+
+.books-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 300px;
+    justify-items: center;
+}

@@ -3,6 +3,10 @@ import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { fetchBooks } from "../../store/action-creators/booksFetched";
+import "./search.scss"
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import BookCard from "../BookCard/BookCard";
+
 
 const Search: FunctionComponent = () => {
     const inputRef = useRef<HTMLInputElement>(null)
@@ -19,19 +23,19 @@ const Search: FunctionComponent = () => {
         if(title != undefined)
             dispatch(fetchBooks(title)) 
 
-        console.log(books)
     }
     return (
         <>
-            <form action="" onSubmit={search}>
-                <label htmlFor="search">
-                    Search
-                    <input type="text" name="search" id="search" ref={inputRef}/>
+            <form action="" onSubmit={search} className="search-form">
+                <label htmlFor="search" className="input-label">
+                    <input type="text" name="search" id="search" ref={inputRef} placeholder="Book title"/>
                 </label>
-                <button type="submit">Search</button>
+                <button type="submit"><SearchOutlinedIcon /></button>
             </form>
-            { books?.loading && <div>Loading</div> }
-            { books?.books.map(book => <div>{book.title}</div>)}
+            { books?.loading && <div className="loading">Loading</div> }
+            <div className="books-list">
+                { books?.books.map(book => <BookCard book={book}/>)}
+            </div>
         </>
     );
 }

@@ -1,14 +1,9 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { fetchBooks } from "./store/action-creators/booksFetched";
+import { FunctionComponent, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import './App.scss'
 import RecentBooks from "./components/RecentBooks/RecentBooks";
 import AddBookModal from "./components/AddBookModal/AddBookModal";
 import Search from "./components/Search/Search";
-import { useSelector } from "react-redux";
-import { RootState } from "./store";
-import { useDispatch } from "react-redux";
-import { useAppDispatch } from "./components/hooks/useAppDispatch";
 
 
 const App: FunctionComponent = () => {

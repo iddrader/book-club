@@ -11,8 +11,15 @@ export enum BookActionTypes {
     FETCH_BOOKS_ERROR = "FETCH_BOOKS_ERROR",
 }
 
+export interface IBook {
+    title: string;
+    author_name: string;
+    cover_i: number;
+    ratings_average: number;
+}
+
 export interface IBooksFetched {
-    books: any[];
+    books: IBook[];
     error: string | null;
     loading: boolean;
 }
