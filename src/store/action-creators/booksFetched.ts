@@ -4,7 +4,7 @@ import axios from "axios"
 
 
 export const fetchBooks = (request: string) => {
-    const title = request.trim().split(" ").join("+")
+    const title = request.trim().split(" ").join("+") 
     
     return async (dispatch: Dispatch<BooksFetchedAction>) => {
         try {
