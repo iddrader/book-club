@@ -13,9 +13,6 @@ const Search: FunctionComponent = () => {
     const books = useSelector((state: RootState) => state.booksFetched)
     const dispatch = useAppDispatch()
 
-    useEffect(() => {
-    }, []);
-
     const search = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const title = inputRef.current?.value;
