@@ -25,18 +25,18 @@ const Search: FunctionComponent = () => {
 
     }
     return (
-        <>
+        <div className="search-page">
             <form action="" onSubmit={search} className="search-form">
                 <label htmlFor="search" className="input-label">
                     <input type="text" name="search" id="search" ref={inputRef} placeholder="Book title"/>
                 </label>
                 <button type="submit"><SearchOutlinedIcon /></button>
             </form>
-            { books?.loading && <div className="loading">Loading</div> }
+            { books?.loading && <div className="loading"></div> }
             <div className="books-list">
                 { books?.books.map(book => <BookCard book={book}/>)}
             </div>
-        </>
+        </div>
     );
 }
  

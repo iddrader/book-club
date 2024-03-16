@@ -3,4 +3,20 @@
     height: 280px;
     width: 180px;
     margin-top: 22px;
+    display: flex;
+    flex-direction: column-reverse;
+    
+    p {
+        color: white;
+        z-index: 1;
+        margin: 0 8px;
+    }
+}
+
+.book-bg {
+    position: absolute;
+    background: linear-gradient(rgba(194, 194, 194, 0.1), black);
+    width: inherit;
+    height: inherit;
+    opacity: 0.8;
 }

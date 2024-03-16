@@ -11,8 +11,12 @@ const BookCard: FunctionComponent<BookCardProps> = ({book}) => {
 
     return (
         <div className="book-card" style={{
-            background: `url(https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg)`
+            background: 
+                `url(https://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg)`,
+            backgroundSize:
+                'contain'
         }}>
+            <div className="book-bg"></div>
             <p>{book.title}</p>
             <p>{book.author_name}</p>
         </div>
