@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { setLoginModalShowing, setRegisterModalShowing } from "../../store/action-creators/config";
 import { RootState } from "../../store";
+import RegisterModal from "../RegisterModal/RegisterModal";
+import LoginModal from "../LoginModal/LoginModal";
  
 const Welcome: FunctionComponent= () => {
     const config = useSelector((state: RootState) => state.config);
@@ -38,14 +40,10 @@ const Welcome: FunctionComponent= () => {
             </div>
             
             { config.registerModalShowing && 
-                <div className="register-modal">
-                    
-                </div>
+                <RegisterModal />
             }
             { config.loginModalShowing && 
-                <div className="login-modal">
-                    
-                </div>
+                <LoginModal />
             }
         </div>
     );
