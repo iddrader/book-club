@@ -1,10 +1,14 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 import './navBar.scss'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { setMenuShowing } from "../../store/action-creators/config";
 
 
 interface NavBarProps {
@@ -12,11 +16,16 @@ interface NavBarProps {
 }
  
 const NavBar: FunctionComponent<NavBarProps> = () => {
-    const [menuOpen, setMenuOpen] = useState(false);
+    const config = useSelector((state: RootState) => state.config)
+    const dispatch = useAppDispatch();
+
+    const handleMenuClick = () => {
+        dispatch(setMenuShowing())
+    }
 
     return (
         <nav className="navbar">
-            {menuOpen ? 
+            {config.menuShowing ? 
                 <ul className="menu">
                     <li><PersonOutlineIcon /></li>
                     <li><LogoutOutlinedIcon /></li>
@@ -26,9 +35,10 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
                 : 
                 <div className="title">BookClub</div>
             }
-            <div className="menuButton" onClick={() => setMenuOpen(prev => !prev)}>
+            { config.isAuth &&
+            <div className="menuButton" onClick={handleMenuClick}>
                 <MenuOutlinedIcon />
-            </div>
+            </div>}
         </nav>
     );
 }
