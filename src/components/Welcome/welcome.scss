@@ -1,11 +1,18 @@
 @use '../../base';
 
 .welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 22px;
-    gap: 22px;
+    display: grid;
+    margin: 18px;
+    gap: 20px;
+    
+    .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        p {
+            margin-bottom: 22px;
+        }
+    }
 
     p {
         font-size: 24px;
@@ -15,43 +22,51 @@
         width: 380px;
         border-radius: 20px;
     }
+}
 
-    .welcome-buttons {
+.welcome-buttons {
+    display: flex;
+    flex-direction: column;
+
+    .signup-btn, .signin-btn {
+        width: 400px;
+        height: 60px;
+        border-radius: 20px;
+        margin: auto;
         display: flex;
-        flex-direction: column;
-
-        .signup-btn, .signin-btn {
-            width: 400px;
-            height: 60px;
-            border-radius: 20px;
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 24px;
-        }
-
-        .signup-btn {
-            background-color: base.$primaryColor;
-            border: none;
-        }
-
-        .signin-btn {
-            background-color: white;
-            margin-top: 12px;
-            border: 1px solid base.$gray;
-        }
-
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
     }
+
+    .signup-btn {
+        background-color: base.$primaryColor;
+        border: none;
+    }
+
+    .signin-btn {
+        background-color: white;
+        margin-top: 12px;
+        border: 1px solid base.$gray;
+    }
+
 }
 
 @media (min-width: 600px) {
     .welcome {
-        width: 40%;
+        width: 90%;
         margin: 22px auto;
-
+        grid-template-columns: 1fr 1fr;
+        
         img {
             width: 100%;
         }
+    }
+
+    .welcome-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80vh;
     }
 }
