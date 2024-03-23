@@ -2,9 +2,9 @@ import { Dispatch } from "redux"
 import { ConfigActions, configActionTypes } from "../../types/config"
 
 
-export const setIsAuth = () => {
+export const setIsAuth = (authState: boolean) => {
     return (dispatch: Dispatch<ConfigActions>) => {
-        dispatch({type: configActionTypes.SET_AUTH})
+        dispatch({type: configActionTypes.SET_AUTH, payload: authState})
     }
 }
 

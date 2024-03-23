@@ -7,7 +7,7 @@ import { supabase } from "../../api";
 const RegisterPage: FunctionComponent = () => {
     const navigate = useNavigate();
 
-    const handleLoginSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    const handleRegisterSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement)
         const email = formData.get("email") as string;
@@ -24,13 +24,15 @@ const RegisterPage: FunctionComponent = () => {
 
         error
         ? console.log(error)
-        : navigate('/')
+        : alert("Email has been send to your email address. Please confirm your email by following the link.")
+        
+        navigate('/')
     }
 
     return (
         <>
             <div className="register-page">
-                <form action="" onSubmit={handleLoginSubmit}>
+                <form action="" onSubmit={handleRegisterSubmit}>
                     <input type="email" name="email" id="email" placeholder="Email"/>
                     <input type="password" name="password" id="password" placeholder="Password"/>
                     <input type="password" name="password2" id="password2" placeholder="Confirm password"/>

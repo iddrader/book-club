@@ -8,7 +8,7 @@ const InitialState: IConfig = {
 export const configReducer = (state = InitialState, action: ConfigActions): IConfig => {
     switch (action.type) {
         case configActionTypes.SET_AUTH:
-            return { ...state, isAuth: !state.isAuth }
+            return { ...state, isAuth: action.payload }
         case configActionTypes.SET_MENU_SHOWING:
             return { ...state, menuShowing: !state.menuShowing }
         default: 

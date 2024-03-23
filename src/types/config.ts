@@ -11,6 +11,7 @@ export interface IConfig {
 
 interface ISetAuth {
     type: configActionTypes.SET_AUTH;
+    payload: boolean;
 }
 
 interface ISetMenuSHowing {
