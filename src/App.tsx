@@ -4,6 +4,10 @@ import './App.scss'
 import RecentBooks from "./components/RecentBooks/RecentBooks";
 import Search from "./components/Search/Search";
 import Welcome from "./components/Welcome/Welcome";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes.tsx";
+
+
 
 
 const App: FunctionComponent = () => {
@@ -13,7 +17,7 @@ const App: FunctionComponent = () => {
   return (
     <div>
       <NavBar />
-      { isAuth ?
+      {/* { isAuth ?
           <div className="content">
             {searchActive ? 
               <>
@@ -28,7 +32,8 @@ const App: FunctionComponent = () => {
             }
           </div>
         : <Welcome />
-      }
+      } */}
+      <RouterProvider router={router} />
     </div>
   );
 }
