@@ -1,25 +1,9 @@
 import { FunctionComponent } from "react";
 import WelcomeImage from '../../img/pexels-alina-vilchenko-2099266.jpg'
 import './welcome.scss'
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { setLoginModalShowing, setRegisterModalShowing } from "../../store/action-creators/config";
-import { RootState } from "../../store";
-import RegisterModal from "../RegisterPage/RegisterPage";
-import LoginModal from "../LoginPage/LoginPage";
 import { Link } from "react-router-dom";
  
 const Welcome: FunctionComponent= () => {
-    const config = useSelector((state: RootState) => state.config);
-    const dispatch = useAppDispatch();
-
-    const handleSignupClick = () => {
-        dispatch(setRegisterModalShowing())
-    }
-
-    const handleSigninClick = () => {
-        dispatch(setLoginModalShowing())
-    }
 
     return (
         <div className="welcome-wrap">
@@ -39,13 +23,6 @@ const Welcome: FunctionComponent= () => {
                     </div>
                 </div>
             </div>
-            
-            { config.registerModalShowing && 
-                <RegisterModal />
-            }
-            { config.loginModalShowing && 
-                <LoginModal />
-            }
         </div>
     );
 }

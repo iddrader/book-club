@@ -1,23 +1,36 @@
 import { FormEvent, FunctionComponent } from "react";
 import './registerPage.scss';
-import { useAppDispatch } from "../hooks/useAppDispatch";
-import { setRegisterModalShowing } from "../../store/action-creators/config";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../../api";
 
 
-const RegisterModal: FunctionComponent = () => {
-    const dispatch = useAppDispatch();
+const RegisterPage: FunctionComponent = () => {
+    const navigate = useNavigate();
 
-
-    const handleRegisterSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleLoginSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        dispatch(setRegisterModalShowing());
+        const formData = new FormData(event.target as HTMLFormElement)
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+        const password2 = formData.get("password2") as string;
+
+        if(password !== password2)
+            return;
+    
+        let { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password
+        })
+
+        error
+        ? console.log(error)
+        : navigate('/')
     }
 
     return (
         <>
             <div className="register-page">
-                <form action="" onSubmit={handleRegisterSubmit}>
+                <form action="" onSubmit={handleLoginSubmit}>
                     <input type="email" name="email" id="email" placeholder="Email"/>
                     <input type="password" name="password" id="password" placeholder="Password"/>
                     <input type="password" name="password2" id="password2" placeholder="Confirm password"/>
@@ -30,4 +43,4 @@ const RegisterModal: FunctionComponent = () => {
     );
 }
  
-export default RegisterModal;
+export default RegisterPage;
