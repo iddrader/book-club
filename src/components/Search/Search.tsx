@@ -1,7 +1,5 @@
 import { FormEvent, FunctionComponent, useRef } from "react";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
-import { useAppDispatch } from "../hooks/useAppDispatch";
+import { useAppDispatch, useAppSelector } from "../hooks/useAppDispatch";
 import { fetchBooks } from "../../store/action-creators/booksFetched";
 import "./search.scss"
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -10,8 +8,8 @@ import BookCard from "../BookCard/BookCard";
 
 const Search: FunctionComponent = () => {
     const inputRef = useRef<HTMLInputElement>(null)
-    const books = useSelector((state: RootState) => state.booksFetched)
-    const dispatch = useAppDispatch()
+    const books = useAppSelector(state => state.booksFetched)
+    const dispatch = useAppDispatch();
 
     const search = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()

@@ -10,7 +10,6 @@ import { RootState } from "../../store";
 import { useAppDispatch } from "../hooks/useAppDispatch";
 import { setIsAuth, setMenuShowing } from "../../store/action-creators/config";
 import { supabase } from "../../api";
-import { useNavigate } from "react-router-dom";
 
 
 interface NavBarProps {
