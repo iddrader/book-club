@@ -8,7 +8,9 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { useAppDispatch } from "../hooks/useAppDispatch";
-import { setMenuShowing } from "../../store/action-creators/config";
+import { setIsAuth, setMenuShowing } from "../../store/action-creators/config";
+import { supabase } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 
 interface NavBarProps {
@@ -20,6 +22,15 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
     const dispatch = useAppDispatch();
 
     const handleMenuClick = () => {
+        dispatch(setMenuShowing());
+    }
+
+    const handleLogoutClick = async () => {
+        let { error } = await supabase.auth.signOut();
+        if (error) 
+            return error
+        
+        dispatch(setIsAuth(false));
         dispatch(setMenuShowing())
     }
 
@@ -28,7 +39,7 @@ const NavBar: FunctionComponent<NavBarProps> = () => {
             {config.menuShowing ? 
                 <ul className="menu">
                     <li><PersonOutlineIcon /></li>
-                    <li><LogoutOutlinedIcon /></li>
+                    <li onClick={handleLogoutClick}><LogoutOutlinedIcon /></li>
                     <li><DarkModeOutlinedIcon /></li>
                     <li><InfoOutlinedIcon /></li>
                 </ul>
